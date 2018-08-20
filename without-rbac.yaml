@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: nginx-ingress-controller
-          image: kubic/nginx-ingress-controller:10.0
+          image: kubic/nginx-ingress-controller:latest
           args:
             - /nginx-ingress-controller
             - --default-backend-service=$(POD_NAMESPACE)/default-http-backend

@@ -1,27 +1,19 @@
 # kubic-ingress-controller
 
-This repo provides YAML files and instructions for deploying [nginx inress controller](https://github.com/kubernetes/ingress-nginx)
+This repo provides YAML files and instructions for deploying [nginx ingress controller](https://github.com/kubernetes/ingress-nginx)
 based on openSUSE images on Kubernetes (or preferably [Kubic / SUSE CaaSP](https://github.com/kubic-project)),
 
-## Building images
+## Pulling the images
 
-Container images are stored in [Open Build System](https://build.opensuse.org)
-in [home:mrostecki:branches:devel:CaaSP:kubic-container project](https://build.opensuse.org/project/show/home:mrostecki:branches:devel:CaaSP:kubic-container).
+### openSUSE based images
 
-To build them, do:
+In order to get the one based on openSUSE, you can pull them from the [openSUSE container registry](https://registry.opensuse.org). Look for the nginx-ingress-controller and for the default-http-backend images, and pull them.
 
-```
-osc co home:mrostecki:branches:devel:CaaSP:kubic-container
-cd home:mrostecki:branches:devel:CaaSP:kubic-container
-cd kubic-default-http-backend-image
-osc build container
-docker load -i /var/tmp/build-root/container-x86_64/usr/src/packages/KIWI-docker/kubic-default-http-backend.x86_64-4.0.0.docker.tar.xz
-cd ..
-cd kubic-nginx-ingress-controller-image
-docker load -i /var/tmp/build-root/container-x86_64/usr/src/packages/KIWI-docker/kubic-nginx-ingress-controller.x86_64-4.0.0.docker.tar.xz
-```
+Once you've done that, either tag them as the yaml files expect, or substitute the image name in the yaml files.
 
-Then you can push those images to any registry you want.
+For example:
+
+docker tag registry.opensuse.org/devel/caasp/kubic-container/container/kubic/nginx-ingress-controller:0.15.0 kubic/nginx-ingress-controller:latest
 
 ## Deployment
 

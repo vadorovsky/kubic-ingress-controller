@@ -21,7 +21,7 @@ spec:
         # Any image is permissible as long as:
         # 1. It serves a 404 page at /
         # 2. It serves 200 on a /healthz endpoint
-        image: kubic/default-http-backend:10.0
+        image: registry.opensuse.org/devel/caasp/kubic-container/container_arm/kubic/default-http-backend:0.15.0 
         livenessProbe:
           httpGet:
             path: /healthz

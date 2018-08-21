@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cheese
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  backend:
+    serviceName: default-http-backend
+    servicePort: 80
+  rules:
+    - host: stilton.local
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: stilton
+              servicePort: 80
+    - host: cheddar.local
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: cheddar
+              servicePort: 80
+    - host: wensleydale.local
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: wensleydale
+              servicePort: 80

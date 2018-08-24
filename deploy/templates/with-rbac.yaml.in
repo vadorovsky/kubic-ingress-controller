@@ -19,7 +19,7 @@ spec:
       serviceAccountName: nginx-ingress-serviceaccount
       containers:
         - name: nginx-ingress-controller
-          image: registry.opensuse.org/devel/caasp/kubic-container/container/kubic/nginx-ingress-controller:0.15.0
+          image: @ingress_image_name@
           args:
             - /nginx-ingress-controller
             - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
